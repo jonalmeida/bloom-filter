@@ -2,6 +2,7 @@
 #![feature(step_by)]
 
 mod murmur;
+mod bit_vec;
 
 #[cfg(test)]
 mod test {
