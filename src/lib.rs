@@ -16,11 +16,6 @@ mod bit_vec;
 use bit_vec::BitVec;
 use murmur::murmur3_32_seeded;
 
-//use std::f64::ln;
-//use std::f64::powf;
-
-//use std::f64::ceil;
-
 /// The BloomFilter object. Supports two methods, `insert` and
 /// `maybe_present`.
 pub struct BloomFilter {
