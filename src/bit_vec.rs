@@ -12,7 +12,7 @@ pub struct BitVec {
     // Just the bits, nothing but the bits...
     bits: Vec<u8>,
     // Size of the bit array for bounds checking
-    size: usize,
+    pub size: usize,
 }
 
 impl BitVec {
