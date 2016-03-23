@@ -1,9 +1,6 @@
 /// A simple bit vector library
 /// By: Brian A. Madden - brian.a.madden@gmail.com
 
-
-use std::vec::from_elem;
-
 /// Bit vector object. Allows for setting, unsetting, flipping of
 /// bits.  Indexing beyond the bounds of the vector will raise an
 /// error.
@@ -30,7 +27,7 @@ impl BitVec {
     /// Set the bit at `pos` to 1
     pub fn set(&mut self, pos: usize) {
         if pos > self.size { panic!("Attempted to index beyond bounds of bit vector."); }
-        self.bits[pos / 8] |= (1 << (pos % 8));
+        self.bits[pos / 8] |= 1 << (pos % 8);
     }
 
     /// Set the bit at `pos` to 0
@@ -45,7 +42,7 @@ impl BitVec {
     /// the bit is 1 it becomes 0.
     pub fn flip(&mut self, pos: usize) {
         if pos > self.size { panic!("Attempted to index beyond bounds of bit vector."); }
-        self.bits[pos / 8] ^= (1 << (pos % 8));
+        self.bits[pos / 8] ^= 1 << (pos % 8);
     }
 
     /// Return the raw bytes of the bit vector

@@ -24,6 +24,7 @@ pub struct BloomFilter {
 }
 
 
+#[allow(dead_code)]
 impl BloomFilter {
 
     /// Static constructor method.
@@ -71,7 +72,7 @@ impl BloomFilter {
 
     fn insert(&mut self, value: &str) {
         // Generate a bit index for each of the hash functions needed
-        for i in (0..self.num_hashes) {
+        for i in 0..self.num_hashes {
             let bit_index = ((murmur3_32_seeded(value, i as u32)
                               % (self.bits.size as u32)) as u32);
             self.bits.set(bit_index as usize);
@@ -85,7 +86,7 @@ impl BloomFilter {
     ///   value: &str - The value to test for
     /// Returns: true if value maybe present, false otherwise
     fn maybe_present(&self, value: &str) -> bool {
-        for i in (0..self.num_hashes) {
+        for i in 0..self.num_hashes {
             let bit_index = ((murmur3_32_seeded(value, i as u32)
                               % (self.bits.size as u32)) as u32);
 
