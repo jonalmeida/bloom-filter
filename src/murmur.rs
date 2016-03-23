@@ -34,14 +34,14 @@ pub fn murmur3_32_seeded(key: &str, seed: u32) -> u32 {
             // Slice is from [x, y) so we'll use byte_index, byte_index +4
             let mut chunk = key_bytes_to_u32_chunk(
                 &key_bytes[byte_index..byte_index+4]);
-
-            chunk = chunk * c1;
+            println!("chunk: {}", chunk);
+            chunk = chunk.wrapping_mul(c1);
             chunk = (chunk << r1) | (chunk >> (32 - r1));
-            chunk = chunk * c2;
+            chunk = chunk.wrapping_mul(c2);
 
             hash = hash ^ chunk;
             hash = (hash << r2) | (hash >> (32 - r2));
-            hash = (hash * m) + n;
+            hash = (hash.wrapping_mul(m)).wrapping_add(n);
 
         } else {
             // If we have less than four...
@@ -50,9 +50,9 @@ pub fn murmur3_32_seeded(key: &str, seed: u32) -> u32 {
                 &key_bytes[byte_index..len]);
 
 
-            chunk = chunk * c1;
+            chunk = chunk.wrapping_mul(c1);
             chunk = (chunk << r1) | (chunk >> (32 - r1));
-            chunk = chunk * c2;
+            chunk = chunk.wrapping_mul(c2);
 
             hash = hash ^ chunk;
         }
@@ -60,9 +60,9 @@ pub fn murmur3_32_seeded(key: &str, seed: u32) -> u32 {
 
     hash = hash ^ (len as u32);
     hash = hash ^ (hash >> 16);
-    hash = hash * 0x85ebca6b;
+    hash = hash.wrapping_mul(0x85ebca6b);
     hash = hash ^ (hash >> 13);
-    hash = hash * 0xc2b2ae35;
+    hash = hash.wrapping_mul(0xc2b2ae35);
     hash = hash ^ (hash >> 16);
 
     return hash;
