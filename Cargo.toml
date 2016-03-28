@@ -1,5 +1,5 @@
 [package]
-name = "bloom-filter"
+name = "bloom_filter"
 version = "0.1.0"
 authors = ["Jonathan Almeida <git@jonalmeida.com>"]
 
