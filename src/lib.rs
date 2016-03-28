@@ -40,7 +40,7 @@ impl BloomFilter {
     ///
     /// Returns: BloomFilter
 
-    fn new(expected_inserts: usize, fpr: f64) -> BloomFilter {
+    pub fn new(expected_inserts: usize, fpr: f64) -> BloomFilter {
         // Figure out necessary size of bit_vec (m bits)
         // m = -(n ln(p)) / ln(2)^2
 
@@ -70,7 +70,7 @@ impl BloomFilter {
     ///   value: &str - Value to insert into the bloom filter
     /// Returns: ()
 
-    fn insert(&mut self, value: &str) {
+    pub fn insert(&mut self, value: &str) {
         // Generate a bit index for each of the hash functions needed
         for i in 0..self.num_hashes {
             let bit_index = ((murmur3_32_seeded(value, i as u32)
@@ -85,7 +85,7 @@ impl BloomFilter {
     /// Params:
     ///   value: &str - The value to test for
     /// Returns: true if value maybe present, false otherwise
-    fn maybe_present(&self, value: &str) -> bool {
+    pub fn maybe_present(&self, value: &str) -> bool {
         for i in 0..self.num_hashes {
             let bit_index = ((murmur3_32_seeded(value, i as u32)
                               % (self.bits.size as u32)) as u32);

@@ -7,7 +7,6 @@
 /// 64-bit implementation soon to follow...
 
 
-
 /// 32-bit implementation of MurmurHash3
 /// Params: `key: &str` - a string to hash
 ///         `seed: u32` - starter value for the hash
