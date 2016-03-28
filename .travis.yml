@@ -1,11 +1,11 @@
 language: rust
 rust:
-  - 1.6.0
+  - 1.7.0
   - stable
   - beta
   - nightly
 matrix:
   allow_failures:
-    - rust: 1.6.0
+    - rust: 1.7.0
     - rust: stable
     - rust: beta
