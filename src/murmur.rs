@@ -33,7 +33,6 @@ pub fn murmur3_32_seeded(key: &str, seed: u32) -> u32 {
             // Slice is from [x, y) so we'll use byte_index, byte_index +4
             let mut chunk = key_bytes_to_u32_chunk(
                 &key_bytes[byte_index..byte_index+4]);
-            println!("chunk: {}", chunk);
             chunk = chunk.wrapping_mul(c1);
             chunk = (chunk << r1) | (chunk >> (32 - r1));
             chunk = chunk.wrapping_mul(c2);
