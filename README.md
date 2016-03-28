@@ -4,8 +4,12 @@ Bloom Filter
 This is an updated version of Brian Madden's [rust-bloom-filter](https://github.com/brianmadden/rust-bloom-filter)
 to compile for Rust 1.0+.
 
+[![Build Status](https://travis-ci.org/jonalmeida/bloom-filter.svg?branch=master)](https://travis-ci.org/jonalmeida/bloom-filter)
+
 Bloom filter library implemented in Rust -- includes MurmurHash3
-implementation, and simple bit vector library
+implementation, and simple bit vector library.
+
+**Only builds with nightly!**
 
 Still early implementation. Currently includes: working bloom filter
 library, working 32-bit murmurhash3 implementation, as well as a
