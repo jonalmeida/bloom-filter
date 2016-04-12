@@ -31,6 +31,7 @@ impl BitVec {
     }
 
     /// Set the bit at `pos` to 0
+    #[allow(dead_code)]
     pub fn unset(&mut self, pos: usize) {
         if pos > self.size { panic!("Attempted to index beyond bounds of bit vector."); }
         self.bits[pos / 8] &= {
@@ -40,12 +41,14 @@ impl BitVec {
 
     /// Flip the bit at `pos`. If the bit is 0 it becomes 1; if
     /// the bit is 1 it becomes 0.
+    #[allow(dead_code)]
     pub fn flip(&mut self, pos: usize) {
         if pos > self.size { panic!("Attempted to index beyond bounds of bit vector."); }
         self.bits[pos / 8] ^= 1 << (pos % 8);
     }
 
     /// Return the raw bytes of the bit vector
+    #[allow(dead_code)]
     pub fn get_bytes<'a>(&'a self) -> &'a [u8] {
         &self.bits
     }
@@ -100,4 +103,3 @@ fn bit_vec_out_of_bounds_test() {
     let mut tester: BitVec = BitVec::new(8);
     tester.set(15);
 }
-

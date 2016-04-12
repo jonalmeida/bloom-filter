@@ -108,6 +108,7 @@ fn key_bytes_to_u32_chunk(bytes: &[u8]) -> u32 {
 /// Convenience function that simply calls murmur3_32_seeded with a seed
 /// of 0.
 /// Returns: u32
+#[allow(dead_code)]
 pub fn murmur3_32(key: &str) -> u32 { murmur3_32_seeded(key, 0) }
 
 
