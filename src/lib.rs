@@ -73,8 +73,8 @@ impl BloomFilter {
     pub fn insert(&mut self, value: &str) {
         // Generate a bit index for each of the hash functions needed
         for i in 0..self.num_hashes {
-            let bit_index = ((murmur3_32_seeded(value, i as u32)
-                              % (self.bits.size as u32)) as u32);
+            let bit_index = (murmur3_32_seeded(value, i as u32)
+                              % (self.bits.size as u32)) as u32;
             self.bits.set(bit_index as usize);
         }
     }
@@ -87,8 +87,8 @@ impl BloomFilter {
     /// Returns: true if value maybe present, false otherwise
     pub fn maybe_present(&self, value: &str) -> bool {
         for i in 0..self.num_hashes {
-            let bit_index = ((murmur3_32_seeded(value, i as u32)
-                              % (self.bits.size as u32)) as u32);
+            let bit_index = (murmur3_32_seeded(value, i as u32)
+                              % (self.bits.size as u32)) as u32;
 
             if !self.bits.is_set(bit_index as usize) {
                 return false;
