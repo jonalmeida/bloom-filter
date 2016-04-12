@@ -16,24 +16,37 @@ impl BitVec {
 
     /// Create a new `bitvec` with `size` bits
     pub fn new(size: usize) -> BitVec {
-        BitVec { bits: vec![0u8; size], size: size}
+        BitVec {
+            bits: vec![0u8; size],
+            size: size,
+        }
     }
 
     pub fn is_set(&self, pos: usize) -> bool {
-        if pos > self.size { panic!("Attempted to index beyond bounds of bit vector."); }
-        if (1 << (pos % 8)) & self.bits[pos / 8] > 0 { true } else { false }
+        if pos > self.size {
+            panic!("Attempted to index beyond bounds of bit vector.");
+        }
+        if (1 << (pos % 8)) & self.bits[pos / 8] > 0 {
+            true
+        } else {
+            false
+        }
     }
 
     /// Set the bit at `pos` to 1
     pub fn set(&mut self, pos: usize) {
-        if pos > self.size { panic!("Attempted to index beyond bounds of bit vector."); }
+        if pos > self.size {
+            panic!("Attempted to index beyond bounds of bit vector.");
+        }
         self.bits[pos / 8] |= 1 << (pos % 8);
     }
 
     /// Set the bit at `pos` to 0
     #[allow(dead_code)]
     pub fn unset(&mut self, pos: usize) {
-        if pos > self.size { panic!("Attempted to index beyond bounds of bit vector."); }
+        if pos > self.size {
+            panic!("Attempted to index beyond bounds of bit vector.");
+        }
         self.bits[pos / 8] &= {
             0xFF ^ (1 << (pos % 8))
         }
@@ -43,7 +56,9 @@ impl BitVec {
     /// the bit is 1 it becomes 0.
     #[allow(dead_code)]
     pub fn flip(&mut self, pos: usize) {
-        if pos > self.size { panic!("Attempted to index beyond bounds of bit vector."); }
+        if pos > self.size {
+            panic!("Attempted to index beyond bounds of bit vector.");
+        }
         self.bits[pos / 8] ^= 1 << (pos % 8);
     }
 
