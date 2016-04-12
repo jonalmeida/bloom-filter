@@ -9,12 +9,12 @@
 //! http://en.wikipedia.org/wiki/Bloom_filter.
 //! By: Brian A. Madden - brian.a.madden@gmail.com
 
-mod murmur;
+mod murmur3;
 mod bit_vec;
 
 
 use bit_vec::BitVec;
-use murmur::murmur3_32_seeded;
+use murmur3::murmur3_32_seeded;
 
 /// The BloomFilter object. Supports two methods, `insert` and
 /// `maybe_present`.
