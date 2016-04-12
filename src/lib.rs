@@ -129,4 +129,3 @@ fn test_check_only() {
 fn test_fpr_leq_0() {
     let bf = BloomFilter::new(2, 0.0);
 }
-
